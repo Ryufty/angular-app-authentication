@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div *ngIf="auth.user | async; then authenticated">
+    <!-- template will replace this div 
+    <div *ngIf="auth.user | async; then authenticated else guest"> -->
+  </div>
+
+  <ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+      <div class="col-sm-5" *ngIf="!user.username" >
+        <form [formGroup]="signupForm" (ngSubmit)="setUsername(user)">
+          <div class="form-group row">
+            <label for="username" class="col-md-3 col-form-label">Username</label>
+            <div class="col-sm-10">
+              <input type="username" class="form-control" formControlName="username">
+            </div>
+          </div>
+          <!-- linked to signupform formcontrol username -->
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Submit</button>
+            </div>
+            <div class="col-sm-8 pt-2 pr-5">
+              <div *ngIf="username.invalid && username.dirty" class="text-danger">
+                {{ username.value }} is not available
+              </div>
+              <div *ngIf="username.valid" class="text-success">
+                {{ username.value }} is available
+              </div>
+              <div *ngIf="username.pending" class="text-info">
+                Checking availability of {{ username.value }}......
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    <!-- User logged in -->
+      <div class="col-sm-5" *ngIf="user.username">
+        <fieldset class="border border-primary pl-3">
+            <legend class="w-auto p-1">Hello, {{ user.username }}</legend>
+          <div class="row pl-2 pb-3">
+            <div class="col-sm-3 pl-4 pt-1">
+              <img class="border border-dark p-1" [src]="user.photoURL" height="110" width="110">
+            </div>
+            <div class="col-sm-9 pt-3">
+              <div class="row">
+                <div class="col-sm-7 pt-3">
+                  <h6>User-ID: </h6>
+                  {{ user.uid }}
+                </div>
+                <div class="col-sm-5">
+                  <button class="btn btn-danger" (click)="auth.signOut()">Logout</button>
+                  <h5 class="text-warning pt-1" *ngIf="user.roles.subscriber">- User Status: Subscriber</h5>
+                  <h5 class="text-warning pt-1" *ngIf="user.roles.admin">- User Status: Admin</h5>
+                </div>
+              </div>
+            </div>           
+          </div>
+        </fieldset>
+
+        <h5 *ngIf="user.catchPhrase" class="text-success">
+          Phrase: {{ user.catchPhrase }}
+        </h5>
+        
+        <form [formGroup]="detailForm" *ngIf="user.username && !user.catchPhrase" (ngSubmit)="setCatchPhrase(user)">
+            <div class="form-group row">
+              <label for="catchPhrase" class="col-md-5 col-form-label">Set your Catch Phrase</label>
+              <div class="col-sm-10">
+                <input type="type" class="form-control" formControlName="catchPhrase" placeholder="CatchPhrase">
+              </div>
+              <!-- linked to detailform formcontrol catchphrase -->
+              <div class="col-sm-2">
+                <button class="btn btn-primary" type="submit" [disabled]="!detailForm.valid">Submit</button>
+              </div>
+            </div>  
+        </form>
+      
+        <button class="btn btn-outline-primary" (click)="secretPost(user)">
+          Secret content!!
+        </button>
+  
+        <button class="btn btn-outline-primary" (click)="subscriberPost()">
+          Subscriber content!!
+        </button>
+  
+        <button class="btn btn-outline-danger" (click)="changeStatus(user)">
+          <div *ngIf="!user.roles.admin">Give me Admin Power!!</div>
+          <div *ngIf="user.roles.admin">I do not want Admin Power anymore!!</div>
+        </button>
+
+        <div *ngIf="this.subscriber">
+          <app-subs-page></app-subs-page>
+        </div>
+
+        <div *ngIf="this.secret">
+            <app-secret-page></app-secret-page>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+

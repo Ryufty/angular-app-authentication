@@ -1,0 +1,56 @@
+<div class="container-fluid">
+<!-- if we don’t have a user, give me an empty object, 
+     then set that as a template variable called user.-->
+  <ng-container *ngIf="(auth.user | async) || {} as user"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- User NOT logged in -->
+    <div class="row">
+      <div class="col-sm-2 p-5">
+        <h3>Hello, GUEST</h3>
+        <h6>Login to get started...</h6>
+  
+        <button class="btn btn-primary" (click)="auth.googleLogin()">
+          <i class="fab fa-google"></i> Connect Google
+        </button>
+      </div>
+
+      <div class="col-sm-8">
+        <form [formGroup]="signupForm" (ngSubmit)="signup()" >
+          <fieldset class="border border-primary p-3">
+            <legend class="w-auto p-1">New User Signup</legend>
+            <div class="form-group row">
+              <label for="email" class="col-sm-1 col-form-label">Email</label>
+              <div class="col-sm-5">
+                <input type="email" class="form-control" formControlName="email">
+              </div>
+              <!-- linked to signupform formcontrol email -->
+              <div class="text-danger" *ngIf="email.invalid && email.dirty">
+                Your email doesn't look quite right...
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="password" class="col-sm-1 col-form-label">Password</label>
+              <div class="col-sm-5">
+                <input type="password" class="form-control" formControlName="password" required>
+              </div>
+              <!-- linked to signupform formcontrol password -->
+              <div class="text-danger" *ngIf="password.invalid && password.touched">
+                Password must be between 6 & 24 chars and have one number
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-1">
+                <button type="submit" class="btn btn-dark" [disabled]="!signupForm.valid">Submit</button>
+              </div>
+              <div class="col-sm-4">
+                <div class="text-success" *ngIf="signupForm.valid">Form looks good! let's do this.</div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>

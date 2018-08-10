@@ -1,0 +1,5 @@
+<div *ngIf="auth.user | async as user">
+  <div *ngIf="auth.canRead(user)">
+    <h4>Subscriber contents here !!</h4>
+  </div> 
+</div>
