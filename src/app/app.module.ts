@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './core/auth.service';
+import { NotifyService } from './core/notify.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -39,7 +40,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     AppBootstrapModule,
     NgIdleKeepaliveModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
