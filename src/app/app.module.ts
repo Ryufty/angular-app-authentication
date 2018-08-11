@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from '@angular/http';
 
 import { CoreModule } from './core/core.module';
 import { AppBootstrapModule } from './core/app-bootstrap.module';
@@ -31,6 +32,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     CoreModule, 
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpModule,
     HttpClientModule,
     AngularFirestoreModule,
     AppBootstrapModule,
