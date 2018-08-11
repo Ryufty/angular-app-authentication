@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';

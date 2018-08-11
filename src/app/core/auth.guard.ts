@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 
 import { NotifyService } from './notify.service';
 import { AuthService } from './auth.service'
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { tap, map, take } from 'rxjs/operators';
 
 
