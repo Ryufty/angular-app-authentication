@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from '@angular/http';
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
 import { CoreModule } from './core/core.module';
 import { AppBootstrapModule } from './core/app-bootstrap.module';
@@ -40,7 +41,9 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     AppBootstrapModule,
     NgIdleKeepaliveModule.forRoot()
   ],
-  providers: [AuthService, NotifyService, HttpClientModule, HttpModule],
+  providers: [AuthService, NotifyService, { provide: CookieService, useFactory: cookieServiceFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function cookieServiceFactory() { return new CookieService(); }
