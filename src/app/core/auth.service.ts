@@ -42,7 +42,7 @@ export class AuthService {
           return this.afs.doc<User>(`users/${auth.uid}`).valueChanges();
         } else {
           // logged out, null
-          return of([]);
+          return of(null);
         }
       })
     )

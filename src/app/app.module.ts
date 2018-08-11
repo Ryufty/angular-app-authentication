@@ -38,7 +38,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     HttpClientModule,
     AngularFirestoreModule,
     AppBootstrapModule,
-    NgIdleKeepaliveModule.forRoot()
+    NgIdleKeepaliveModule
   ],
   providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]
