@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
 import { CoreModule } from './core/core.module';
-import { AppBootstrapModule } from './core/app-bootstrap.module';
+//import { AppBootstrapModule } from './core/app-bootstrap.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
@@ -36,7 +36,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     ReactiveFormsModule,
     HttpClientModule,
     AngularFirestoreModule,
-    AppBootstrapModule,
+    //AppBootstrapModule,
     NgIdleKeepaliveModule.forRoot()
   ],
   providers: [AuthService, NotifyService],
