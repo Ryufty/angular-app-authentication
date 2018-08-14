@@ -18,7 +18,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { SecretPageComponent } from './secret-page/secret-page.component';
 import { SubsPageComponent } from './subs-page/subs-page.component';
-//import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { SubsPageComponent } from './subs-page/subs-page.component';
     HttpClientModule,
     AngularFirestoreModule,
     AppBootstrapModule,
-    //NgIdleKeepaliveModule.forRoot()
+    NgIdleKeepaliveModule.forRoot()
   ],
   providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]
