@@ -5,8 +5,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
-import { CoreModule } from './core/core.module';
-import { AppBootstrapModule } from './core/app-bootstrap.module';
+//import { CoreModule } from './core/core.module';
+//import { AppBootstrapModule } from './core/app-bootstrap.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -46,12 +46,16 @@ import { CanReadGuard } from './core/can-read.guard';
     HttpModule,
     HttpClientModule,
     AngularFirestoreModule,
-    AppBootstrapModule,
     NgIdleKeepaliveModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [AuthService, NotifyService, AuthGuard, AdminGuard, CanReadGuard],
   bootstrap: [AppComponent],
-  exports: [NgIdleKeepaliveModule]
+  exports: [BsDropdownModule, TooltipModule, ModalModule, NgIdleKeepaliveModule]
 })
 export class AppModule { }
 

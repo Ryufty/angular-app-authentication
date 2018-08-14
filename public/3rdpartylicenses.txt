@@ -248,19 +248,19 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-@firebase/app@0.3.3
-Apache-2.0
-Apache-2.0
-
-@firebase/util@0.2.1
-Apache-2.0
-Apache-2.0
-
 firebase@5.2.0
 Apache-2.0
 Apache-2.0
 
 @firebase/polyfill@0.3.3
+Apache-2.0
+Apache-2.0
+
+@firebase/app@0.3.3
+Apache-2.0
+Apache-2.0
+
+@firebase/util@0.2.1
 Apache-2.0
 Apache-2.0
 
