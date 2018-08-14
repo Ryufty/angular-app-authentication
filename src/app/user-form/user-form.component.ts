@@ -17,9 +17,9 @@ export class UserFormComponent implements OnInit {
   detailForm: FormGroup;
 
   constructor (
-    public fb: FormBuilder, 
-    public auth: AuthService,
-    public afs: AngularFirestore
+    private fb: FormBuilder, 
+    private auth: AuthService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
