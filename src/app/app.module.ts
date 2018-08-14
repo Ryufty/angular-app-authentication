@@ -5,10 +5,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
-import { CoreModule } from './core/core.module';
-import { AppBootstrapModule } from './core/app-bootstrap.module';
+//import { CoreModule } from './core/core.module';
+//import { AppBootstrapModule } from './core/app-bootstrap.module';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './core/auth.service';
@@ -35,18 +40,23 @@ import { CanReadGuard } from './core/can-read.guard';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angularfire'), // imports firebase/app needed for everything
-    CoreModule, 
+    AngularFireModule.initializeApp(environment.firebase, 'angularfire'), // imports firebase/app needed for everything 
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     AngularFirestoreModule,
-    AppBootstrapModule,
-    NgIdleKeepaliveModule.forRoot()
+    //AppBootstrapModule,
+    NgIdleKeepaliveModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [AuthService, NotifyService, AuthGuard, AdminGuard, CanReadGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [BsDropdownModule, TooltipModule, ModalModule, NgIdleKeepaliveModule]
 })
 export class AppModule { }
 
