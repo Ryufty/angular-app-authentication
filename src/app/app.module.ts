@@ -21,6 +21,10 @@ import { SecretPageComponent } from './secret-page/secret-page.component';
 import { SubsPageComponent } from './subs-page/subs-page.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
+import { AuthGuard } from './core/auth.guard';
+import { AdminGuard } from './core/admin.guard';
+import { CanReadGuard } from './core/can-read.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     AppBootstrapModule,
     NgIdleKeepaliveModule.forRoot()
   ],
-  providers: [AuthService, NotifyService],
+  providers: [AuthService, NotifyService, AuthGuard, AdminGuard, CanReadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
