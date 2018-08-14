@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
 import { CoreModule } from './core/core.module';
-//import { AppBootstrapModule } from './core/app-bootstrap.module';
+import { AppBootstrapModule } from './core/app-bootstrap.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
@@ -18,7 +18,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { SecretPageComponent } from './secret-page/secret-page.component';
 import { SubsPageComponent } from './subs-page/subs-page.component';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+//import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     ReactiveFormsModule,
     HttpClientModule,
     AngularFirestoreModule,
-    //AppBootstrapModule,
-    NgIdleKeepaliveModule.forRoot()
+    AppBootstrapModule,
+    //NgIdleKeepaliveModule.forRoot()
   ],
   providers: [AuthService, NotifyService],
   bootstrap: [AppComponent]

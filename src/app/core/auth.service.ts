@@ -10,7 +10,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 
 import { User } from './data/User';
 import { NotifyService } from './notify.service';
-import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
+//import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router,
     private notify: NotifyService,
-    private idle: Idle,
+   // private idle: Idle,
   ) {   
 
     //// Get auth data, then get firestore user document || null. 
@@ -38,7 +38,7 @@ export class AuthService {
       switchMap(auth => {
         if (auth) {
           // logged in, get custom user from Firestore
-          this.autoLogOut();
+          //this.autoLogOut();
           return this.afs.doc<User>(`users/${auth.uid}`).valueChanges();
         } else {
           // logged out, null
