@@ -18,7 +18,7 @@ export class UserFormComponent implements OnInit {
 
   constructor (
     private fb: FormBuilder, 
-    private auth: AuthService,
+    public auth: AuthService,
     private afs: AngularFirestore
   ) { }
 

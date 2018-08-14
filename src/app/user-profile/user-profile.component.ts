@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   secret: boolean = false;
 
   constructor (
-    private auth: AuthService, 
+    public auth: AuthService, 
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private router: Router

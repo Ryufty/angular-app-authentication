@@ -8,7 +8,7 @@ import { AuthService } from '../core/auth.service';
 })
 export class SubsPageComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
